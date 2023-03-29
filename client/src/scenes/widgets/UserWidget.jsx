@@ -9,8 +9,10 @@ import UserImage from "../../components/UserImage";
 import FlexBetween from "../../components/FlexBetween";
 import WidgetWrapper from "../../components/WidgetWrapper";
 import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import {ReactComponent as LinkedIn}  from '../../assets/icons-linkedin.svg'
+import {ReactComponent as Twitter}  from '../../assets/icons-twitter.svg'
 
 const UserWidget = ({ userId, picturePath }) => {
   const [user, setUser] = useState(null);
@@ -22,7 +24,7 @@ const UserWidget = ({ userId, picturePath }) => {
   const main = palette.neutral.main;
 
   const getUser = async () => {
-    const response = await fetch(`${process.env.BASE_URL}users/${userId}`, {
+    const response = await fetch(`${process.env.REACT_APP_BASE_URL}users/${userId}`, {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
     });
@@ -120,7 +122,7 @@ const UserWidget = ({ userId, picturePath }) => {
 
         <FlexBetween gap="1rem" mb="0.5rem">
           <FlexBetween gap="1rem">
-            <img src="../assets/twitter.png" alt="twitter" />
+            <Twitter/>
             <Box>
               <Typography color={main} fontWeight="500">
                 Twitter
@@ -133,7 +135,7 @@ const UserWidget = ({ userId, picturePath }) => {
 
         <FlexBetween gap="1rem">
           <FlexBetween gap="1rem">
-            <img src="../assets/linkedin.png" alt="linkedin" />
+            <LinkedIn/>
             <Box>
               <Typography color={main} fontWeight="500">
                 Linkedin
