@@ -13,7 +13,7 @@ const FriendListWidget = ({ userId }) => {
 
   const getFriends = async () => {
     const response = await fetch(
-        `${process.env.BASE_URL}users/${userId}/friends`,
+        `${process.env.REACT_APP_BASE_URL}users/${userId}/friends`,
       {
         method: "GET",
         headers: { Authorization: `Bearer ${token}` },
@@ -38,7 +38,8 @@ const FriendListWidget = ({ userId }) => {
         Friend List
       </Typography>
       <Box display="flex" flexDirection="column" gap="1.5rem">
-        {friends.map((friend) => (
+          {console.log("firends",friends)}
+        {friends?.map((friend) => (
           <Friend
             key={friend._id}
             friendId={friend._id}
